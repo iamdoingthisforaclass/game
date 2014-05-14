@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=images\ height\ width
+comment0.target=MyPanel(java.awt.Image[][],\ int,\ int)
+comment1.params=g
+comment1.target=void\ paintComponent(java.awt.Graphics)
+comment2.params=images\ height\ width
+comment2.target=void\ setLevel(java.awt.Image[][],\ int,\ int)
+numComments=3
