@@ -3,9 +3,19 @@ import java.awt.*;
 import java.util.*;
 import java.io.*;
 /**
- * Creates a top-level window.
- * 
- * @version 1
+ * 2 Player Mario and Luigi game
+ * Zach- Luigi
+ * Pranav - Mario
+ * Ryan - Yoshi
+ * Bryce - Goomba
+ * Greg - Red Koopa
+ * Ross - Green Koopa
+ * Saran - Peach
+ * Mr. Page - Bowser
+ * Bowser Fire Balls - Object First Books
+ * Fire Balls - BlueJ Colored Pictures
+ * ""(easy project) - Growth Mushrooms
+ * "Huffman" - Poison Mushroom
  */
 public class GameMain extends JPanel
 {    
@@ -13,12 +23,25 @@ public class GameMain extends JPanel
     private String level="Levels/level1.txt";
     private int levelHeight=10;
     private int levelWidth=20;
-    private String gameName="Thing";
+    private String gameName="POOOOOOOOOOOOOOOOP";
     private String gameIconURL="GameIcon.png";
-    private String spike="Spike.png";
-    private String ground="Ground.png";
-    private String air="Air.png";
-    private String end="End.png";
+    private String brick= "brick.png";
+    private String air= "Air.png";
+    private String pow= "powblock.png";
+    private String c1 = "cloud1.png";
+    private String c2 = "cloud2.png";
+    private String c3 = "cloud3.png";
+    private String c4 = "cloud4.png";
+    private String c5 = "cloud5.png";
+    private String p1 = "p1.png";
+    private String p2 = "p2.png";
+    private String y = "yoshi.png";
+    private String gL = "goombaL.png";
+    private String gR = "goombaR.png";
+    private String koopaG = "koopa troopa g.png";
+    private String koopaR = "koopa troopa r.png";
+    private String Peach = "saran.png";
+    private final Color SKY = new Color(153, 217, 234);
     //Other Fields
     private Graphics panelGraphics;
     private MyPanel panel;
@@ -39,7 +62,7 @@ public class GameMain extends JPanel
         }
     }
 
-    public void start()
+    private void start()
     {
         javax.swing.SwingUtilities.invokeLater(new Runnable() 
             {
@@ -64,8 +87,9 @@ public class GameMain extends JPanel
         frame.add(panel);
         frame.pack();
         frame.setLocationRelativeTo(null);
-        frame.setSize(680, 380);
+        frame.setSize(680, 370);
         frame.setVisible(true); 
+        frame.setBackground(SKY);
     }
 
     private Image getImage(String url) 
@@ -83,7 +107,12 @@ public class GameMain extends JPanel
         }
     }
 
-    public void loadImages()
+    public Image randomCloud()
+    {
+        return getImage("cloud" + (int)(Math.random() * 5 + 1) + ".png");
+    }
+
+    private void loadImages()
     {
         try{
             Scanner scan=new Scanner(new File(level));        
@@ -96,17 +125,41 @@ public class GameMain extends JPanel
                     char c = line.charAt(w);
                     switch(c)
                     {
-                        case 's':
-                        levelImages[h][w] = getImage(spike);
-                        break;
-                        case 'g':
-                        levelImages[h][w] = getImage(ground);
+                        case 'b':
+                        levelImages[h][w] = getImage(brick);
                         break;
                         case '.':
                         levelImages[h][w] = getImage(air);
                         break;
-                        case 'e':
-                        levelImages[h][w] = getImage(end);
+                        case 'p':
+                        levelImages[h][w] = getImage(pow);
+                        break;
+                        case 'c':
+                        levelImages[h][w] = randomCloud();
+                        break;
+                        case 'g':
+                        levelImages[h][w] = getImage(gL);
+                        break;
+                        case 'h':
+                        levelImages[h][w] = getImage(gR);
+                        break;
+                        case 'm':
+                        levelImages[h][w] = getImage(p1);
+                        break;
+                        case 'l':
+                        levelImages[h][w] = getImage(p2);
+                        break;
+                        case 'k':
+                        levelImages[h][w] = getImage(koopaG);
+                        break;
+                        case 'r':
+                        levelImages[h][w] = getImage(koopaR);
+                        break;
+                        case 's':
+                        levelImages[h][w] = getImage(Peach);
+                        break;
+                        case 'y':
+                        levelImages[h][w] = getImage(y);
                     }
                 }
             }
